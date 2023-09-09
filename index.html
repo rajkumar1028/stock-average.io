@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            margin: 0 auto; /* Center the container horizontally */
+            position: relative; /* Relative positioning for footer */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-button {
+            background-color: #f7f8f8;
+            color: #080808;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background-color: #7cf371;
+        }
+
+        .calculator-input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculator-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 48%;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator-button:hover {
+            background-color: #1e7e34;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Create a container for the content and footer */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+
+        /* Content container for the main content */
+        .main-content {
+            flex: 1; /* Expand to fill remaining space */
+        }
+
+        /* Add a style for the footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            margin-top: auto;
+        }
+        a {
+            color: rgb(247, 243, 243);
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a container for the content and footer -->
+    <div class="content-container">
+        <div class="container">
+            <h1>Stock Calculator</h1>
+
+            <!-- Navigation Tabs -->
+            <ul>
+                <li><a href="#" class="tab-button" id="averageTab">Average Calculator</a></li>
+                <li><a href="#" class="tab-button" id="profitTab">Profit Calculator</a></li>
+            </ul>
+
+            <!-- Average Calculator Tab -->
+            <div id="averageCalculator" class="tab-content">
+                <label for="purchaseCount">Number of Purchases:</label>
+                <input type="number" id="purchaseCount" class="calculator-input">
+                <div id="purchaseInputs"></div>
+                <button id="calculateAverage" class="calculator-button">Calculate Average</button>
+                <button id="clearAverage" class="calculator-button">Clear</button>
+                <p>Total Number of Stocks: <span id="totalStocks"></span></p>
+                <p>Average Price Per Stock: <span id="averagePrice"></span></p>
+                <p>Total Amount Spent: <span id="totalAmountSpent"></span></p>
+            </div>
+
+            <!-- Profit Calculator Tab -->
+            <div id="profitCalculator" class="tab-content">
+                <label for="costPrice">Cost Price:</label>
+                <input type="number" id="costPrice" class="calculator-input">
+                <label for="sellingPrice">Selling Price:</label>
+                <input type="number" id="sellingPrice" class="calculator-input">
+                <button id="calculateProfit" class="calculator-button">Calculate Profit</button>
+                <button id="clearProfit" class="calculator-button">Clear</button>
+                <p id="profitResult" class="result"></p>
+                <label for="profitPercentage">Total Profit Percentage:</label>
+                <input type="text" id="profitPercentage" class="calculator-input" readonly>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            &copy; September - 2023. Feedback: 
+            <a href ="mailto:rajk3510@gmail.com">rajk3510@gmail.com</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
