@@ -127,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const usProfitResult = document.getElementById("usProfitResult");
     const usProfitPercentageResult = document.getElementById("usProfitPercentageResult");
     const totalPercentageResult = document.getElementById("totalPercentageResult");
+    const costInRupeeResult = document.getElementById("costInRupeeResult");
+    const totalINRPercentageResult = document.getElementById("totalINRPercentageResult"); // New result element
 
     calculateUSProfitButton.addEventListener("click", function() {
         const usCostPrice = parseFloat(usCostPriceInput.value);
@@ -139,10 +141,16 @@ document.addEventListener("DOMContentLoaded", function() {
             const usProfitPercentage = (usProfit / usCostPrice) * 100;
             const exchangeRatePercentage = ((currentExchangeRate - exchangeRate) / exchangeRate) * 100;
             const totalPercentage = usProfitPercentage + exchangeRatePercentage;
+            const costInRupee = usCostPrice * exchangeRate;
+            const totalINRPercentage = (totalPercentage / 100) * (usCostPrice * exchangeRate) + costInRupee;
 
             usProfitResult.textContent = `Profit (USD): $${usProfit.toFixed(2)}`;
             usProfitPercentageResult.textContent = `Profit Percentage: ${usProfitPercentage.toFixed(2)}%`;
-            totalPercentageResult.textContent = `Total Percentage: ${totalPercentage.toFixed(2)}%`;
+            totalPercentageResult.textContent = `Total Percentage(including Rupee depreciation): ${totalPercentage.toFixed(2)}%`;
+            costInRupeeResult.textContent = `cost price in Rupees : ${costInRupee.toFixed(2)}`;
+            totalINRPercentageResult.textContent = `Total profit in Rupees: ${totalINRPercentage.toFixed(2)}`;
+
+
         }
     });
 
@@ -154,5 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
         usProfitResult.textContent = "";
         usProfitPercentageResult.textContent = "";
         totalPercentageResult.textContent = "";
+        ostInRupeeResult.textContent = "";
+        totalINRPercentageResult.textContent = ""; // Clear the new result element
     });
 });
