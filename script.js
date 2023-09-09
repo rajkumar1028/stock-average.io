@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
         usProfitResult.textContent = "";
         usProfitPercentageResult.textContent = "";
         totalPercentageResult.textContent = "";
-        ostInRupeeResult.textContent = "";
+        costInRupeeResult.textContent = "";
         totalINRPercentageResult.textContent = ""; // Clear the new result element
     });
 });
