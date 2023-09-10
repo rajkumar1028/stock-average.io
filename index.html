@@ -37,14 +37,17 @@
         font-size: 16px; /* Adjust font size for smaller screens */
         width: 100%; /* Make the input fields full width */
         padding: 8px; /* Add padding to input fields */
-        margin: 5px 0; 
+        margin: 5px 0;
     }
 
     .calculator-button {
-        font-size: 14px; /* Adjust font size for smaller screens */
-        width: 100%;
-        padding: 8px 12px;
-        margin-top: 10px;
+        font-size: 14px; /* Reduce font size for smaller screens */
+        width: 100%; /* Make the button full width */
+        padding: 12px; /* Adjust padding for the button */
+        margin-top: 10px; /* Add margin to create spacing between buttons */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide overflowing text */
+        text-overflow: ellipsis; /* Show an ellipsis
     }
     
     /* Additional responsive adjustments can be made here */
@@ -111,6 +114,9 @@
             background-color: #078d26;
             color: #fff;
             border: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
             padding: 10px 20px;
             cursor: pointer;
             width: 48%;
