@@ -18,9 +18,31 @@
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            width: 650px;
+            max-width: 100%;
             margin: 0 auto; /* Center the container horizontally */
         }
+
+        @media (max-width: 768px) {
+    .container {
+        width: 90%; /* Adjust the width for smaller screens */
+    }
+
+    .tab-button {
+        font-size: 16px; /* Adjust font size for smaller screens */
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+    }
+
+    .calculator-input {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    .calculator-button {
+        font-size: 16px; /* Adjust font size for smaller screens */
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+    }
+    
+    /* Additional responsive adjustments can be made here */
+}
 
         h1 {
             color: #333;
