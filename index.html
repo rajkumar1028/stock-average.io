@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stock Calculator</title>
+    <title>Stock Average Calculator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -24,7 +24,7 @@
 
         @media (max-width: 768px) {
     .container {
-        width: 90%; /* Adjust the width for smaller screens */
+        width: 48%; /* Adjust the width for smaller screens */
     }
 
     .tab-button {
@@ -68,12 +68,29 @@
             color: #060606;
             border: none;
             padding: 10px 20px;
+            display: flex;
             cursor: pointer;
             transition: background-color 0.3s ease;
+     
+        }
+        .tab-button img {
+            width: 24px; /* Adjust the width as needed */
+            height: 24px; /* Adjust the height as needed */
+            margin-right: 10px; /* Add spacing between the icon and text */
+        }
+        .tab-button .icon {
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.3s ease; /* Add animation for the transform property */
         }
 
+        .tab-button:hover .icon {
+            transform: rotate(360deg); /* Rotate the SVG 360 degrees on hover */
+        }
+
+
         .tab-button:hover {
-            background-color: #a7faa8;
+            background-color: #31f535;
         }
 
         .calculator-input {
@@ -94,11 +111,25 @@
             border-radius: 4px;
             transition: background-color 0.3s ease;
         }
+        .calculator-button img {
+            width: 20px; /* Adjust the width as needed */
+            height: 20px; /* Adjust the height as needed */
+            margin-right: 5px; /* Add spacing between the icon and text */
+        }
+        /* CSS for the rotate-on-hover class */
+        .rotate-on-hover {
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+    .calculator-button:hover .rotate-on-hover{
+        transform: rotate(350deg);
+    }
 
         .calculator-button:hover {
             background-color: #1e7e34;
         }
-
+        
         .result {
             font-weight: bold;
             margin-top: 10px;
@@ -116,45 +147,88 @@
 
         /* Change the color of anchor links to black */
         a {
-            color: black;
+            color: rgb(250, 248, 248);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Stock Calculator</h1>
+        <h1>Stock Average Calculator</h1>
 
         <!-- Navigation Tabs -->
         <ul>
-            <li><a href="#" class="tab-button" id="averageTab">Average Calculator</a></li>
-            <li><a href="#" class="tab-button" id="profitTab">Profit Calculator</a></li>
-            <li><a href="#" class="tab-button" id="usStocksTab">US Stocks Profit Calculator</a></li>
+            <li>
+                <a href="#" class="tab-button" id="averageTab">
+                    <span class="icon">
+                        <img src="calc.svg" alt="Average Calculator Icon">
+                    </span>
+                    Average Calculator
+                </a>
+            </li>
+            <li>
+                <a href="#" class="tab-button" id="profitTab">
+                    <span class="icon">
+                        <img src="arrow_up.svg" alt="profit calculator Icon">
+                    </span>
+                    Profit Calculator</a>
+            </li>
+            <li>
+                <a href="#" class="tab-button" id="usStocksTab">
+                    <span class="icon">
+                        <img src="usd.svg" alt="us stocks profit calculator Icon">
+                    </span>
+                    US Stocks Profit Calculator</a>
+            </li>
         </ul>
 
-        <div id="averageCalculator" class="tab-content">
-            <label for="purchaseCount">Number of Purchases:</label>
-            <input type="number" id="purchaseCount" class="calculator-input">
-            <div id="purchaseInputs"></div>
-            <button id="calculateAverage" class="calculator-button">Calculate Average</button>
-            <button id="clearAverage" class="calculator-button">Clear</button>
-            <p>Total Number of Stocks: <span id="totalStocks"></span></p>
-            <p>Average Price Per Stock: <span id="averagePrice"></span></p>
-            <p>Total Amount Spent: <span id="totalAmountSpent"></span></p>
-        </div>
-
-        <!-- Profit Calculator Tab -->
-        <div id="profitCalculator" class="tab-content">
-            <label for="costPrice">Cost Price:</label>
-            <input type="number" id="costPrice" class="calculator-input">
-            <label for="sellingPrice">Selling Price:</label>
-            <input type="number" id="sellingPrice" class="calculator-input">
-            <button id="calculateProfit" class="calculator-button">Calculate Profit</button>
-            <button id="clearProfit" class="calculator-button">Clear</button>
-            <p id="profitResult" class="result"></p>
-            <label for="profitPercentage">Total Profit Percentage:</label>
-            <input type="text" id="profitPercentage" class="calculator-input" readonly>
-        </div>
+<!-- Average Calculator Tab -->
+<div id="averageCalculator" class="tab-content">
+    <label for="purchaseCount">Number of Purchases:</label>
+    <input type="number" id="purchaseCount" class="calculator-input">
+    <div id="purchaseInputs"></div>
+    <div class="button-container">
+        <button id="calculateAverage" class="calculator-button">
+            <span class="rotate-on-hover">
+                <img src="calc.svg" alt="calculates the profit">
+                </span>
+                Calculate Average
+        </button>
+        <button id="clearAverage" class="calculator-button">
+            <span class="rotate-on-hover">
+                <img src="clear.svg" alt="clears the data">
+               </span>
+               Clear
+        </button>        
     </div>
+    <p>Total Number of Stocks: <span id="totalStocks"></span></p>
+    <p>Average Price Per Stock: <span id="averagePrice"></span></p>
+    <p>Total Amount Spent: <span id="totalAmountSpent"></span></p>
+</div>
+
+<!-- Profit Calculator Tab -->
+<div id="profitCalculator" class="tab-content">
+    <label for="costPrice">Cost Price:</label>
+    <input type="number" id="costPrice" class="calculator-input">
+    <label for="sellingPrice">Selling Price:</label>
+    <input type="number" id="sellingPrice" class="calculator-input">
+    <div class="button-container">
+        <button id="calculateProfit" class="calculator-button">
+            <span class="rotate-on-hover">
+                <img src="calc.svg" alt="calculates the profit">
+                </span>
+                Calculate Profit
+        </button>
+        <button id="clearProfit" class="calculator-button">
+            <span class="rotate-on-hover">
+                <img src="clear.svg" alt="clears the data">
+               </span>
+               Clear
+        </button>
+    </div>
+    <p id="profitResult" class="result"></p>
+    <label for="profitPercentage">Total Profit Percentage:</label>
+    <input type="text" id="profitPercentage" class="calculator-input" readonly>
+</div>
 
         <!-- US Stocks Profit Calculator Tab -->
         <div id="usStocksCalculator" class="tab-content">
@@ -166,8 +240,20 @@
             <input type="number" id="exchangeRate" class="calculator-input">
             <label for="currentExchangeRate">USD Exchange Rate (Now):</label>
             <input type="number" id="currentExchangeRate" class="calculator-input">
-            <button id="calculateUSProfit" class="calculator-button">Calculate Profit</button>
-            <button id="clearUSProfit" class="calculator-button">Clear</button>
+            <div class="button-container">
+                <button id="calculateUSProfit" class="calculator-button">
+                    <span class="rotate-on-hover">
+                        <img src="calc.svg" alt="calculates the profit">
+                        </span>
+                        Calculate profit
+                </button>
+                <button id="clearUSProfit" class="calculator-button">
+                    <span class="rotate-on-hover">
+                        <img src="clear.svg" alt="clears the data">
+                       </span>
+                       Clear
+                </button>        
+            </div>
             <p id="usProfitResult" class="result"></p>
             <p id="usProfitPercentageResult" class="result"></p>
             <p id="totalPercentageResult" class="result"></p>
@@ -178,7 +264,8 @@
 
     <!-- Footer -->
     <div class="footer">
-        &copy; September - 2023. Feedback: Rajkumar
+        &copy; September - 2023. Feedback:
+        <a href="rajk3510@gmail.com">rajk3510@gmail.com</a>
     </div>
 
     <script src="script.js"></script>
